@@ -1,4 +1,20 @@
 <html>
+
+  <!--
+          _                                            _      _       
+  __ __ _| |__  __ _ _ _ __ _ __ _ ___  __ ___ _ __   | |__ _| |__ ___
+ / _/ _` | '_ \/ _` | '_/ _` / _` (_-<_/ _/ _ \ '  \  | / _` | '_ (_-<
+ \__\__,_|_.__/\__,_|_| \__, \__,_/__(_)__\___/_|_|_| |_\__,_|_.__/__/
+                        |___/                                         
+    2013 - Theme distributed by free under a GPL v3 License.
+    This code is Open Source, feel free to redistribute it.
+    
+    Code & Design: A. Felipe Cabargas <felipe@cabargas.com> 
+    site: <http://cabargas.com>
+
+  -->
+
+
     <head>
         <title>{Title}</title>
         <link rel="shortcut icon" href="{Favicon}">
@@ -89,6 +105,19 @@
             padding: 3px;
         }
         
+        .pagination{
+            margin-left: 10px;
+            text-align: center;
+        }
+        
+        .pagination a, .pagination a:hover, .pagination a:visited{
+            background: none;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            color: #5da423
+        } 
+        
         .footer{
             position:absolute;
             bottom:0;
@@ -138,11 +167,6 @@
             
             <div class="content">            
                 <hr />
-            
-                <div data-alert class="alert-box success">
-                    Sitio en construcción (!) La navegación puede variar drásticamente. Consultas o más detalle de los proyectos? Envíame un correo a felipe@cabargas.com
-                    <a href="#" class="close">&times;</a>
-                </div>
     
                 <ul class="large-block-grid-3" id="posts">
                     {block:Posts}
@@ -267,21 +291,23 @@
                         {/block:Audio}
                     {/block:Posts}
                 </ul>
+
+                <div class="pagination">
+                  {block:PreviousPage}
+                      <a href="{PreviousPage}">&#171; Anterior</a>
+                  {/block:PreviousPage}
+    
+                  {block:NextPage}
+                      <a href="{NextPage}">Siguiente &#187;</a>
+                  {/block:NextPage}
+                </div>
                 
                 <hr />
+                
             </div>
         
             <div class="footer">
                 <p>
-                
-                    {block:PreviousPage}
-                        <a href="{PreviousPage}">&#171; Anterior</a>
-                    {/block:PreviousPage}
-        
-                    {block:NextPage}
-                        <a href="{NextPage}">Siguiente &#187;</a>
-                    {/block:NextPage}
-        
                     <a href="/archive">Archivo</a>
                 
                     | Todos los derechos reservados &copy; {CopyrightYears}                
@@ -290,8 +316,7 @@
         </div>
          
         <script src="http://cabargas.com/aseo/js/vendor/zepto.js"></script>
-        <script src="http://cabargas.com/aseo/js/foundation/foundation.js"></script>
-        <script src="http://cabargas.com/aseo/js/foundation/foundation.alerts.js"></script>
+        <script src="http://cabargas.com/aseo/js/foundation.min.js"></script>
            
     </body>    
 </html>
