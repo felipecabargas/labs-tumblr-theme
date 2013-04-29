@@ -1,0 +1,297 @@
+<html>
+    <head>
+        <title>{Title}</title>
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="stylesheet" href="http://cabargas.com/aseo/css/foundation.min.css">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+    </head>
+
+    <style>
+        @import url(http://fonts.googleapis.com/css?family=Tauri);
+        
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        body{
+            background: #FFF;
+            height: 100%;
+        }
+        
+        .header{
+            font-family: Tauri;
+            background: #BADA55;
+            padding: 15px;
+            height: 80px;
+        }
+        
+        #logoborder{
+            background: #272727;
+            border-radius: 50%;
+            padding: 10px;
+            float: left;    
+        }
+        
+        #labslogo{
+            background: #FFF;
+            border-radius: 50%;
+            float: left;    
+        }
+        
+        #title{
+            float: right;
+            text-align: right;   
+            opacity: 0.8;
+        }
+        
+        #description{
+            float: right;
+            text-align: right;
+            opacity: 0.5;
+            font-size: 12px;
+        }
+        
+        .boxes{
+            border-radius: 10px;    
+        }
+        
+        .post{
+            max-width: 500px;
+            /* min-width: 380px; */
+            margin-bottom: 35px;    
+        }
+        
+        .container{
+            min-height: 100%;
+            position:relative;
+        }        
+    
+        .content{
+            margin-top: 40px;
+            padding: 12px;
+            padding-bottom:50px;
+            font-family: Tauri;
+        }
+        
+        a, a:hover, a:visited{
+            color: #272727    
+        }
+        
+        .caption a, .caption a:hover, .caption a:visited{
+            background: #5da423;
+            color: #FFF; 
+            border: 1px solid #457a1a;
+            border-radius: 2px;
+            padding: 3px;
+        }
+        
+        .footer{
+            position:absolute;
+            bottom:0;
+            width:100%;
+            text-align: center;
+            padding: 15px;
+            height: 50px;
+            background: #272727;
+            color: #DEDEDE;
+        }
+        
+        .footer a, .footer a:hover, .footer a:visited {
+            background: none;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            color: #DEDEDE;
+        }
+
+        .tags a, .tags a:hover, .tags a:visited{
+            background: none;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            color: #5da423
+        }
+
+        .screenshot-title{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .photoset-wrap a{ display: none; }
+        .photoset-wrap a:first-child { display: block; }
+        
+        {CustomCSS}
+    </style>
+    
+    <body>
+        
+        <div class="container">
+        
+            <div class="header">
+                <div id="logoborder"><a href="/" title="{lang:Home}"><img id="labslogo" src="{PortraitURL-96}"></a></div>
+                <p id="description">{Description}</p>
+            </div>
+            
+            <div class="content">            
+                <hr />
+            
+                <div data-alert class="alert-box success">
+                    Sitio en construcción (!) La navegación puede variar drásticamente. Consultas o más detalle de los proyectos? Envíame un correo a felipe@cabargas.com
+                    <a href="#" class="close">&times;</a>
+                </div>
+    
+                <ul class="large-block-grid-3" id="posts">
+                    {block:Posts}
+                        {block:Text}
+                            <li class="post text">
+                                {block:Title}
+                                    {PortraitURL-64}<h3><a href="{Permalink}">{Title}</a></h3>
+                                {/block:Title}
+        
+                                {Body}
+                            </li>
+                        {/block:Text}
+        
+                        {block:Photo}
+                            <li class="post photo">
+                                <a href="{Permalink}"><div class="boxes" style="height: 250px; background-image: url({PhotoURL-500});"></div></a>
+                            </li>
+                            
+                            {block:PermalinkPage}                        
+                                <div class="caption">{block:Caption}{Caption}{/block:Caption}</div>
+                            
+                                {block:HasTags}
+                                    <div class="tags">{block:Tags}<span><a href="{TagURL}">#{Tag}</a> </span>{/block:Tags}</div>
+                                {/block:HasTags}
+                            
+                            {/block:PermalinkPage} 
+                                
+                        {/block:Photo}
+        
+                        {block:Panorama}
+                            <li class="post panorama">
+                                {LinkOpenTag}
+                                    <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+                                {LinkCloseTag}
+                            </li>
+                                
+                        {/block:Panorama}
+        
+                        {block:Photoset}
+                            <li class="post photoset-wrap ">
+                            {block:Photos}
+                                 <a href="{Permalink}"><div class="boxes" style="height: 250px; background-image: url({PhotoURL-500});"></div></a>
+                            {/block:Photos}
+                            </li>
+                        
+                                                
+                            {block:PermalinkPage}                        
+                                
+                                <div class="caption">{block:Caption}{Caption}{/block:Caption}</div>
+                            
+                                {block:HasTags}
+                                    <div class="tags">{block:Tags}<span><a href="{TagURL}">#{Tag}</a> </span>{/block:Tags}</div>
+                                {/block:HasTags}
+                                
+                                <div class="screenshot-title"><hr /><h5> Más capturas de pantalla: </h3><hr /></div>
+                                <div class="Photoset">
+                                    {Photoset-700} 
+                                </div>
+                            
+                            {/block:PermalinkPage} 
+                        
+                        {/block:Photoset}
+        
+                        {block:Quote}
+                            <li class="post quote">
+                                "{Quote}"
+        
+                                {block:Source}
+                                    <div class="source">{Source}</div>
+                                {/block:Source}
+                            </li>
+                        {/block:Quote}
+        
+                        {block:Link}
+                            <li class="post link">
+                                <a href="{URL}" class="link" {Target}>{Name}</a>
+        
+                                {block:Description}
+                                    <div class="description">{Description}</div>
+                                {/block:Description}
+                            </li>
+                        {/block:Link}
+        
+                        {block:Chat}
+                            <li class="post chat">
+                                {block:Title}
+                                    <h3><a href="{Permalink}">{Title}</a></h3>
+                                {/block:Title}
+        
+                                <ul class="chat">
+                                    {block:Lines}
+                                        <li class="{Alt} user_{UserNumber}">
+                                            {block:Label}
+                                                <span class="label">{Label}</span>
+                                            {/block:Label}
+        
+                                            {Line}
+                                        </li>
+                                    {/block:Lines}
+                                </ul>
+                            </li>
+                        {/block:Chat}
+        
+                        {block:Video}
+                            <li class="post video">
+                                {Video-500}
+        
+                                {block:Caption}
+                                    <div class="caption">{Caption}</div>
+                                {/block:Caption}
+                            </li>
+                        {/block:Video}
+        
+                        {block:Audio}
+                            <li class="post audio">
+                                {AudioPlayerBlack}
+        
+                                {block:Caption}
+                                    <div class="caption">{Caption}</div>
+                                {/block:Caption}
+                            </li>
+                        {/block:Audio}
+                    {/block:Posts}
+                </ul>
+                
+                <hr />
+            </div>
+        
+            <div class="footer">
+                <p>
+                
+                    {block:PreviousPage}
+                        <a href="{PreviousPage}">&#171; Anterior</a>
+                    {/block:PreviousPage}
+        
+                    {block:NextPage}
+                        <a href="{NextPage}">Siguiente &#187;</a>
+                    {/block:NextPage}
+        
+                    <a href="/archive">Archivo</a>
+                
+                    | Todos los derechos reservados &copy; {CopyrightYears}                
+                </p>
+            </div>
+        </div>
+         
+        <script src="http://cabargas.com/aseo/js/vendor/zepto.js"></script>
+        <script src="http://cabargas.com/aseo/js/foundation/foundation.js"></script>
+        <script src="http://cabargas.com/aseo/js/foundation/foundation.alerts.js"></script>
+           
+    </body>    
+</html>
