@@ -1,6 +1,6 @@
 # Labs Portfolio Theme for TUMBLR
 ### Theme for http://labs.cabargas.com
-#### v1.0.0
+#### v2.0.0
 ___                              
 
 ABOUT
@@ -24,6 +24,12 @@ TUMBLR blog
 
 CHANGELOG
 ---------
+
+[v2.0]
+
+ - Full new release
+ - Updated to work with square images (1280x1280 is being used by me) and with 2 post by row now.
+ - The old theme is preserved on the repo for further changes and to share it for free.
 
 [v1.0] 
 
